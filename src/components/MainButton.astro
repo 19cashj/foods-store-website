@@ -1,0 +1,52 @@
+---
+export interface Props {
+	text: string;
+	link: string;
+}
+
+const { text, link } = Astro.props;
+---
+
+<form>
+    <button class="button" formaction={link ? link : "/"}>
+    <p>{text}</p>
+    </button>
+</form>
+
+<style>
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 62px;
+    background-color: #43A276;
+    border-top: 2px solid #5DBC90;
+    border-radius: 4px;
+    z-index: 3;
+    box-shadow: 2px 2px 2px rgba(184,184,184,0.49);
+}
+
+.button:hover {
+    background-color: #5DBC90;
+    border-top: 2px solid #81CBA8;
+    cursor: pointer;
+}
+
+.button > p {
+    color: #F2F2F2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem;
+    padding: 18px;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 1000px) { /* Mobile Large */
+    .button {
+        height: 48px;
+    }
+    .button > p {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+</style>

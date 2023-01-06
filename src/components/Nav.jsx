@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
-import { Params } from "astro";
-import Styles from "./Nav.module.css";
+import { useState } from "react";
+import Styles from "../../styles/Nav.module.css";
 
-const Nav = () => {
+const Nav = (props) => {
   const [hamOpen, setHamOpen] = useState(0);
-  //const router = useRouter();
   return (
     <nav>
       <div className={Styles.nav}>
@@ -17,41 +15,41 @@ const Nav = () => {
             </button>
           </li>
           <li className={Styles.title}>
-            <Link href="/">
+            <a href="/">
               <span>axis natural foods</span>
-            </Link>
+            </a>
           </li>
           <li id={Styles.home}>
-            <Link
-              className={router.pathname == "/" ? Styles.active : null}
+            <a
+              className={props.pathName == "/" ? Styles.active : null}
               href="/"
             >
               <span>Home</span>
-            </Link>
+            </a>
           </li>
           <li id={Styles.items}>
-            <Link
+            <a
               href="/items"
-              className={router.pathname == "/items" ? Styles.active : null}
+              className={props.pathName == "/items" ? Styles.active : null}
             >
               <span>Items</span>
-            </Link>
+            </a>
           </li>
           <li id={Styles.about}>
-            <Link
+            <a
               href="/about"
-              className={router.pathname == "/about" ? Styles.active : null}
+              className={props.pathName == "/about" ? Styles.active : null}
             >
               <span>About</span>
-            </Link>
+            </a>
           </li>
           <li id={Styles.contact}>
-            <Link
+            <a
               href="/contact"
-              className={router.pathname == "/contact" ? Styles.active : null}
+              className={props.pathName == "/contact" ? Styles.active : null}
             >
               <span>Contact</span>
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
@@ -61,43 +59,45 @@ const Nav = () => {
       >
         <ul className={Styles.hamburger_links}>
           <li className={hamOpen ? null : Styles.hidden}>
-            <Link
+            <a
               href="/"
-              className={router.pathname == "/" ? Styles.active : null}
+              className={props.pathName == "/" ? Styles.active : null}
               onClick={() => setHamOpen(0)}
             >
               <span>Home</span>
-            </Link>
+            </a>
           </li>
           <li className={hamOpen ? null : Styles.hidden}>
-            <Link
+            <a
               href="/items"
-              className={router.pathname == "/items" ? Styles.active : null}
+              className={props.pathName == "/items" ? Styles.active : null}
               onClick={() => setHamOpen(0)}
             >
               <span>Items</span>
-            </Link>
+            </a>
           </li>
           <li className={hamOpen ? null : Styles.hidden}>
-            <Link
+            <a
               href="/about"
-              className={router.pathname == "/about" ? Styles.active : null}
+              className={props.pathName == "/about" ? Styles.active : null}
               onClick={() => setHamOpen(0)}
             >
               <span>About</span>
-            </Link>
+            </a>
           </li>
           <li className={hamOpen ? null : Styles.hidden}>
-            <Link
+            <a
               href="/contact"
-              className={router.pathname == "/contact" ? Styles.active : null}
+              className={props.pathName == "/contact" ? Styles.active : null}
               onClick={() => setHamOpen(0)}
             >
               <span>Contact</span>
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
     </nav>
   );
 };
+
+export default Nav;
