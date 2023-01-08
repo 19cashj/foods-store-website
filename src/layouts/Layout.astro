@@ -10,7 +10,6 @@ import "@fontsource/catamaran"
 
 import Nav from '../components/Nav';
 import Footer from '../components/Footer.astro';
-import MainButton from "../components/MainButton.astro";
 
 const pathName = Astro.url.pathname;
 ---
@@ -27,7 +26,6 @@ const pathName = Astro.url.pathname;
 	</head>
 	<body>
 		<Nav pathName={pathName} client:load/>
-		<MainButton text="hi" link="/items"/>
 		<slot />
 		<Footer />
 	</body>
