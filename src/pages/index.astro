@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import Card from '../components/Card.astro';
 import TextCenter from '../components/TextCenter.astro';
 import List from '../components/List.astro';
+import Form from '../components/Form';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,6 +13,12 @@ import List from '../components/List.astro';
 		<Card orientation={false} header={"HELLO"} body={"twuioesjgseogskdlgsdkmfsdiofjmsdlkf"} image={"/wineimage.jpg"} altText={"Store Interior"} buttonText={"See our items"} buttonLink={"/items"}/>
 		<TextCenter header={"Header"} body={"body this is my body"}/>
 		<List header={"Head"} body={"Sub"} list={["Hello","Friend"]}/>
+		<Form action={""} method={"post"} header={"Contact"} inputs={[{
+            "label": "First Name",
+            "id": "fName",
+            "type": "name",
+            "required": true
+        }]}/>
 	</main>
 </Layout>
 
