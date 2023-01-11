@@ -1,0 +1,71 @@
+---
+import Hero from "./Hero.astro";
+import Card from "./Card.astro";
+import TextCenter from "./TextCenter.astro";
+import List from "./List.astro";
+import Form from "./Form";
+
+const { content } = Astro.props;
+---
+
+{content.map((element, index) => {
+    switch (element.type) {
+      case "Hero":
+        return (
+          <section>
+            <Hero
+              body={element.body}
+              image={element.image}
+              altText={element.altText}
+              buttonText={element.buttonText}
+              buttonLink={element.buttonLink}
+            />
+          </section>
+        );
+      case "Card":
+        return (
+          <section>
+            <Card
+              flip={element.flip}
+              image={element.image}
+              altText={element.altText}
+              header={element.header}
+              body={element.body}
+              buttonText={element.buttonText}
+              buttonLink={element.buttonLink}
+            />
+          </section>
+        );
+      case "TextCenter":
+        return (
+          <section>
+            <TextCenter
+              header={element.header}
+              body={element.body}
+            />
+          </section>
+        );
+      case "List":
+        return (
+          <section>
+            <List
+              header={element.header}
+              body={element.body}
+              list={element.list}
+            />
+          </section>
+        );
+      case "Form":
+        return (
+          <section>
+            <Form
+              header={element.header}
+              inputs={element.inputs}
+              buttonText={element.buttonText}
+              buttonLink={element.buttonLink}
+              key={element.id}
+            />
+          </section>
+        );
+    }
+})}

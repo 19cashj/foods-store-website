@@ -5,12 +5,28 @@ import Card from '../components/Card.astro';
 import TextCenter from '../components/TextCenter.astro';
 import List from '../components/List.astro';
 import Form from '../components/Form';
+//import ContentMapper from '../components/ContentMapper.astro';
+import directus from '../../lib/directus';
+
+/*const res = await directus.items("Home").readByQuery({
+    limit: -1,
+    filter: {
+      status: {
+        _eq: "published",
+      },
+    },
+});
+console.log(res)*/
+
+https://github.com/directus/examples/blob/main/astro/src/pages/index.astro
+
+//<ContentMapper content={content} />
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<Hero image={"/tree-svgrepo-com 1.svg"} altText="Tree logo" body="big text" buttonText="Learn More" buttonLink="/about"/>
-		<Card orientation={false} header={"HELLO"} body={"twuioesjgseogskdlgsdkmfsdiofjmsdlkf"} image={"/wineimage.jpg"} altText={"Store Interior"} buttonText={"See our items"} buttonLink={"/items"}/>
+		<Card flip={false} header={"HELLO"} body={"twuioesjgseogskdlgsdkmfsdiofjmsdlkf"} image={"/wineimage.jpg"} altText={"Store Interior"} buttonText={"See our items"} buttonLink={"/items"}/>
 		<TextCenter header={"Header"} body={"body this is my body"}/>
 		<List header={"Head"} body={"Sub"} list={["Hello","Friend"]}/>
 		<Form action={""} method={"post"} header={"Contact"} inputs={[{

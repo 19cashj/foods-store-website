@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	orientation: boolean;
+	flip: boolean;
 	header: string;
 	image?: string;
 	body: string;
@@ -11,11 +11,11 @@ export interface Props {
 
 import MainButton from './MainButton.astro';
 
-const { orientation, header, body, image, altText, buttonText, buttonLink } = Astro.props;
+const { flip, header, body, image, altText, buttonText, buttonLink } = Astro.props;
 ---
 <article class="wrapper">
 	<div
-	  class:list={['card', {card_left: orientation}]}
+	  class:list={['card', {card_left: flip}]}
 	>
 	  {image ? 
 		<div class="image">
