@@ -1,0 +1,99 @@
+---
+export interface Props {
+    image: string;
+    altText: string;
+	body: string;
+    buttonText: string;
+    buttonLink: string;
+}
+
+const { image, altText, body, buttonText, buttonLink } = Astro.props;
+
+import MainButton from "./MainButton.astro";
+import { getAssetURL } from '../utils/get-asset-url'
+---
+
+<div class="container">
+    <div class="body">
+      <h1>{body}</h1>
+      <MainButton
+        text={buttonText}
+        link={buttonLink}
+      />
+    </div>
+    <div class="svg">
+      <img
+        src={getAssetURL(image)}
+        alt={altText}
+      />
+    </div>
+</div>
+<style>
+    .container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 96px 15%;
+}
+
+.container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > div > h1 {
+    font-size: 3rem;
+    line-height: 1.05em;
+    font-family: 'Catamaran', sans-serif;
+    margin-bottom: 48px;
+    color: #3F301D;
+}
+
+.body {
+    padding: 64px;
+    width: 60%;
+    max-width: 768px;
+}
+
+.svg {
+    width: 40%;
+    max-width: 353px;
+    min-width: 158px;
+    height: auto;
+}
+
+@media only screen and (max-width: 1000px) { /* Mobile Large */
+    .body {
+        padding: 48px;
+    }
+    .container > div > h1 {
+        font-size: 2.5rem;
+        line-height: 1.125em;
+    }
+}
+
+@media only screen and (max-width: 800px) { /* Mobile Small */
+    .container > div > h1 {
+        font-size: 2rem;
+        line-height: 1.25em;
+    }
+    .container {
+        flex-direction: column-reverse;
+        text-align: center;
+        margin-top: 64px;
+    }
+    .body {
+        padding: 0px;
+        padding-top: 48px;
+        width: 75%;
+    }
+    .svg {
+        width: 50%;
+    }
+}
+</style>

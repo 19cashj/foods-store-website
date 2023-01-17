@@ -1,0 +1,175 @@
+---
+export interface Props {
+	flip: boolean;
+	header: string;
+	image?: string;
+	body: string;
+	altText?: string;
+	buttonText?: string;
+	buttonLink?: string;
+}
+
+const { flip, header, body, image, altText, buttonText, buttonLink } = Astro.props;
+
+import MainButton from './MainButton.astro';
+import { getAssetURL } from '../utils/get-asset-url'
+---
+<article class="wrapper">
+	<div
+	  class:list={['card', {card_left: flip}]}
+	>
+	  {image ? 
+		<div class="image">
+		  <img
+			src={getAssetURL(image)}
+			alt={altText}
+		  />
+		</div>
+	  : null}
+	  <div class="card_text">
+		<header>
+		  <h3>{header}</h3>
+		</header>
+		<div>
+			<p>{body}</p>
+		</div>
+		{buttonText ? (
+		  <div class="card_text_button">
+			<MainButton text={buttonText} link={buttonLink} />
+		  </div>
+		) : (
+		  <div class="card_text_nobutton"></div>
+		)}
+	  </div>
+	</div>
+  </article>
+<style>
+.wrapper {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+}
+
+.card::before {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    border-top: 4px solid #347e5c;
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    position: relative;
+	flex-direction: row;
+    width: 80%;
+    max-width: 1000px;
+    height: auto;
+    border-top: 4px solid #43A276;
+    background-color: #EFE7DC;
+    box-shadow: 4px 4px 4px rgba(184,184,184,0.49);
+}
+
+.card_left {
+    flex-direction: row-reverse !important;
+}
+
+.card_text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 48px;
+    padding-left: 48px;
+}
+
+.card_text > div {
+    font-family: 'Catamaran', sans-serif;
+    padding-top: 32px;
+    color: #574328;
+    font-size: 1.125rem;
+    line-height: 1.375em;
+}
+
+.card_text > * > h3 {
+    text-align: center;
+    color: #3F301D;
+    margin-top: 48px;
+}
+
+.card_text_button {
+    padding: 34px 0;
+}
+
+.card_text_nobutton {
+    height: 32px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    position: relative;
+    margin: 12px;
+	object-fit: fill;
+}
+.image > * {
+    object-fit: fill;
+    position: relative;
+    height: unset;
+    border-radius: 4px;
+}
+
+.bold {
+    font-weight: 600;
+    text-decoration: underline;
+    color: #347E5C;
+}
+
+@media only screen and (max-width: 1000px) { /* Mobile Large */
+    .card {
+        width: 100%;
+    }
+    .card_text > div {
+       font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 800px) { /* Mobile Small */
+    .card {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+    .image {
+		width: 400px;
+        max-height: 200px;
+        padding-top: 48px;
+        margin: 0px;
+    }
+    .image > * {
+        padding: 24px;
+    }
+    .card_text {
+        width: 100%;
+        display: flex;
+        padding: 0px 20%;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card_text > h3 {
+        padding-top: 0px;
+    }
+
+    .card_text > div {
+        line-height: 1.25em;
+    }
+}
+</style>
