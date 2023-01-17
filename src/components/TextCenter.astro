@@ -1,0 +1,54 @@
+---
+export interface Props {
+	header?: string;
+	body: string;
+}
+
+const { header, body } = Astro.props;
+---
+
+<article class="container">
+    <header>{header ? <h2>{header}</h2> : null}</header>
+    <div>
+        <p>{body}</p>
+    </div>
+</article>
+<style>
+    .bold {
+    font-weight: 600;
+    text-decoration: underline;
+    color: #347E5C;
+}
+
+.container {
+    width: 100vw;
+    text-align: center;
+    margin-top: 64px;
+    padding: 0px 48px;
+}
+
+.container > div {
+    font-family: 'Catamaran', sans-serif;
+    padding-top: 24px;
+    color: #574328;
+    font-size: 1.125rem;
+    line-height: 1.375em;
+}
+
+.container > * > h2 {
+    padding-bottom: 12px;
+    color: #3F301D;
+}
+
+@media only screen and (max-width: 1000px) { /* Mobile Large */
+    .container > div {
+       font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 800px) { /* Mobile Small */
+    .container > div {
+        line-height: 1.25em;
+    }
+}
+</style>

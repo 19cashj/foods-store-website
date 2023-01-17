@@ -1,0 +1,76 @@
+---
+export interface Props {
+	header?: string;
+	body?: string;
+    list: string[];
+}
+
+const { header, body, list } = Astro.props;
+---
+
+<div class="wrapper">
+    <article class="container">
+        <header>{header ? <h2>{header}</h2> : null}</header>
+        {body ? <p class="subtext">{body}</p> : null}
+        <ul class="list">
+        {list.map((element) => {
+            return (
+                <li>
+                    <span>{element}</span>
+                </li>
+            );
+            })}
+            </ul>
+    </article>
+</div>
+<style>
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+}
+
+.container {
+    width: 60%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container > * > h2 {
+    padding-bottom: 12px;
+    color: #3F301D;
+    text-align: center;
+}
+
+.container > p {
+    font-family: 'Catamaran', sans-serif;
+    padding-top: 12px;
+    color: #574328;
+    font-size: 1.125rem;
+    line-height: 1.375em;
+}
+
+.list > li {
+    font-family: 'Catamaran', sans-serif;
+    padding-top: 24px;
+    color: #574328;
+    font-size: 1.125rem;
+    line-height: 1.375em;
+    list-style-type: circle;
+}
+
+@media only screen and (max-width: 1000px) { /* Mobile Large */
+    .container > p, .list > li {
+       font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 800px) { /* Mobile Small */
+    .container > p, .list > li {
+        line-height: 1.25em;
+    }
+}
+</style>
