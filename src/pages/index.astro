@@ -1,10 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Card from '../components/Card.astro';
-import TextCenter from '../components/TextCenter.astro';
-import List from '../components/List.astro';
-import Form from '../components/Form';
 import ContentMapper from '../components/ContentMapper.astro'
 import { getDirectusClient } from '../utils/get-directus-client'
 const directus = await getDirectusClient()
@@ -16,20 +11,11 @@ const response = await directus.items("Home").readByQuery({
       },
     },
 });
+
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Home | Axis Natural Foods">
 	<main>
-		{/*<Hero image={"/tree-svgrepo-com 1.svg"} altText="Tree logo" body="big text" buttonText="Learn More" buttonLink="/about"/>
-		<Card flip={false} header={"HELLO"} body={"twuioesjgseogskdlgsdkmfsdiofjmsdlkf"} image={"/wineimage.jpg"} altText={"Store Interior"} buttonText={"See our items"} buttonLink={"/items"}/>
-		<TextCenter header={"Header"} body={"body this is my body"}/>
-		<List header={"Head"} body={"Sub"} list={["Hello","Friend"]}/>
-		<Form action={""} method={"post"} header={"Contact"} inputs={[{
-            "label": "First Name",
-            "id": "fName",
-            "type": "name",
-            "required": true
-        }]}/>*/}
 		<ContentMapper content={response.data} />
 	</main>
 </Layout>

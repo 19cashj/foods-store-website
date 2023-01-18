@@ -11,7 +11,7 @@ console.log(content)
 ---
   {content.map((element) => {
     switch (element.type) {
-      case "Hero":
+      case "hero":
         return (
           <section>
             <Hero
@@ -23,7 +23,7 @@ console.log(content)
             />
           </section>
         );
-      case "Card":
+      case "card":
         return (
           <section>
             <Card
@@ -37,13 +37,13 @@ console.log(content)
             />
           </section>
         );
-      case "TextCenter":
+      case "textcenter":
         return (
           <section>
             <TextCenter header={element.header} body={element.body} />
           </section>
         );
-      case "List":
+      case "list":
         return (
           <section>
             <List
@@ -53,7 +53,7 @@ console.log(content)
             />
           </section>
         );
-      case "Form":
+      case "form":
         return (
           <section>
             <Form
